@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🔞 成人导航 - 全网精选成人站点导航</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a2e;
+  --card:#16162a;--card-hover:#1e1e3a;
+  --purple:#a855f7;--pink:#ec4899;--cyan:#06b6d4;
+  --grad:linear-gradient(135deg,#a855f7,#ec4899);
+  --grad2:linear-gradient(135deg,#06b6d4,#a855f7);
+  --text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;
+  --radius:16px;--radius-sm:10px;
+  --glow:0 0 20px rgba(168,85,247,.3),0 0 40px rgba(236,72,153,.15);
+  --transition:all .3s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height:1.6;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--purple),var(--pink));border-radius:4px}
+
+/* Hero */
+.hero{
+  position:relative;min-height:340px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:60px 20px 40px;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 30% 50%,rgba(168,85,247,.2),transparent 60%),
+             radial-gradient(ellipse at 70% 50%,rgba(236,72,153,.2),transparent 60%),
+             radial-gradient(ellipse at 50% 80%,rgba(6,182,212,.1),transparent 50%);
+  animation:heroPulse 8s ease-in-out infinite alternate;
+}
+@keyframes heroPulse{
+  0%{opacity:.7;transform:scale(1)}
+  100%{opacity:1;transform:scale(1.05)}
+}
+.hero-title{
+  font-size:clamp(2rem,6vw,3.5rem);font-weight:800;
+  background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;position:relative;z-index:1;
+}
+.hero-sub{
+  font-size:clamp(1rem,2.5vw,1.25rem);color:var(--text2);
+  margin-top:12px;position:relative;z-index:1;
+}
+.hero-stats{
+  display:flex;gap:30px;margin-top:24px;position:relative;z-index:1;
+}
+.hero-stat{text-align:center}
+.hero-stat .num{
+  font-size:2rem;font-weight:800;
+  background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-stat .label{font-size:.85rem;color:var(--text3)}
+
+/* Search */
+.search-wrap{
+  position:sticky;top:0;z-index:100;
+  background:rgba(10,10,15,.85);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(168,85,247,.15);
+  padding:12px 20px;
+}
+.search-inner{max-width:700px;margin:0 auto;position:relative}
+.search-input{
+  width:100%;padding:12px 20px 12px 48px;
+  background:var(--bg3);border:1px solid rgba(168,85,247,.3);
+  border-radius:50px;color:var(--text);font-size:1rem;
+  outline:none;transition:var(--transition);
+}
+.search-input:focus{border-color:var(--purple);box-shadow:0 0 20px rgba(168,85,247,.2)}
+.search-icon{
+  position:absolute;left:18px;top:50%;transform:translateY(-50%);
+  color:var(--text3);font-size:1.1rem;pointer-events:none;
+}
+
+/* Layout */
+.main-layout{
+  display:flex;max-width:1440px;margin:0 auto;
+  min-height:100vh;position:relative;
+}
+
+/* Sidebar */
+.sidebar{
+  width:260px;position:sticky;top:56px;height:calc(100vh - 56px);
+  overflow-y:auto;padding:20px 12px;flex-shrink:0;
+  background:rgba(18,18,26,.6);backdrop-filter:blur(10px);
+  border-right:1px solid rgba(168,85,247,.1);
+}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--purple);border-radius:2px}
+.sidebar-group{margin-bottom:20px}
+.sidebar-group-title{
+  font-size:.7rem;text-transform:uppercase;letter-spacing:2px;
+  color:var(--text3);padding:8px 12px 4px;font-weight:600;
+}
+.sidebar-link{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 12px;border-radius:var(--radius-sm);
+  color:var(--text2);font-size:.9rem;cursor:pointer;
+  transition:var(--transition);
+}
+.sidebar-link:hover,.sidebar-link.active{
+  background:rgba(168,85,247,.12);color:var(--text);
+}
+.sidebar-link .emoji{font-size:1.1rem;width:24px;text-align:center}
+.sidebar-link .count{
+  margin-left:auto;font-size:.75rem;
+  background:rgba(168,85,247,.2);padding:2px 8px;border-radius:10px;
+  color:var(--purple);
+}
+
+/* Content */
+.content{flex:1;padding:24px;min-width:0}
+
+/* Category Section */
+.category-section{margin-bottom:48px;opacity:0;transform:translateY(30px);transition:opacity .6s,transform .6s}
+.category-section.visible{opacity:1;transform:translateY(0)}
+.category-header{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:20px;padding-bottom:12px;
+  border-bottom:1px solid rgba(168,85,247,.15);
+}
+.category-emoji{font-size:1.8rem}
+.category-title{font-size:1.4rem;font-weight:700;color:var(--text)}
+.category-count{
+  font-size:.8rem;padding:3px 10px;border-radius:20px;
+  background:rgba(168,85,247,.15);color:var(--purple);margin-left:auto;
+}
+
+/* Cards Grid */
+.cards-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:16px;
+}
+
+/* Site Card */
+.site-card{
+  background:rgba(22,22,42,.7);backdrop-filter:blur(12px);
+  border:1px solid rgba(168,85,247,.1);border-radius:var(--radius);
+  padding:20px;cursor:pointer;position:relative;overflow:hidden;
+  transition:var(--transition);
+}
+.site-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(168,85,247,.05),rgba(236,72,153,.05));
+  opacity:0;transition:opacity .3s;
+}
+.site-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(168,85,247,.4);
+  box-shadow:var(--glow);
+}
+.site-card:hover::before{opacity:1}
+.card-top{display:flex;align-items:center;gap:12px;margin-bottom:12px;position:relative;z-index:1}
+.card-icon{
+  width:44px;height:44px;border-radius:12px;
+  background:var(--grad);display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;font-weight:700;color:#fff;flex-shrink:0;
+}
+.card-info{flex:1;min-width:0}
+.card-name{font-size:1.05rem;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-rating{display:flex;gap:2px;margin-top:2px}
+.star{color:#fbbf24;font-size:.85rem}
+.star.empty{color:var(--text3)}
+.card-desc{
+  font-size:.85rem;color:var(--text2);line-height:1.5;
+  margin-bottom:12px;position:relative;z-index:1;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+.card-footer{display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:relative;z-index:1}
+.tag{
+  font-size:.7rem;padding:3px 8px;border-radius:6px;font-weight:500;
+}
+.tag-free{background:rgba(34,197,94,.15);color:#22c55e}
+.tag-paid{background:rgba(234,179,8,.15);color:#eab308}
+.tag-cn{background:rgba(6,182,212,.15);color:#06b6d4}
+.tag-hot{background:rgba(239,68,68,.15);color:#ef4444}
+.tag-vr{background:rgba(168,85,247,.15);color:#a855f7}
+.tag-ai{background:rgba(236,72,153,.15);color:#ec4899}
+.tag-live{background:rgba(249,115,22,.15);color:#f97316}
+.card-visit{
+  margin-left:auto;padding:6px 14px;border-radius:20px;
+  background:var(--grad);color:#fff;font-size:.75rem;font-weight:600;
+  opacity:0;transform:translateX(10px);transition:var(--transition);
+  white-space:nowrap;
+}
+.site-card:hover .card-visit{opacity:1;transform:translateX(0)}
+
+/* Mobile sidebar toggle */
+.mobile-toggle{
+  display:none;position:fixed;bottom:20px;right:20px;z-index:200;
+  width:56px;height:56px;border-radius:50%;border:none;
+  background:var(--grad);color:#fff;font-size:1.5rem;
+  cursor:pointer;box-shadow:0 4px 20px rgba(168,85,247,.4);
+}
+.sidebar-overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:149;
+}
+
+/* Back to top */
+.back-top{
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);
+  padding:10px 20px;border-radius:30px;border:none;
+  background:var(--grad);color:#fff;font-size:.9rem;font-weight:600;
+  cursor:pointer;transition:var(--transition);z-index:90;opacity:0;
+}
+.back-top.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+/* Footer */
+.footer{
+  text-align:center;padding:40px 20px;
+  border-top:1px solid rgba(168,85,247,.1);color:var(--text3);font-size:.85rem;
+}
+
+/* Responsive */
+@media(max-width:1024px){
+  .cards-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+}
+@media(max-width:768px){
+  .sidebar{
+    position:fixed;left:-280px;top:0;height:100vh;z-index:150;
+    width:280px;transition:left .3s;padding-top:70px;
+    background:rgba(10,10,15,.98);
+  }
+  .sidebar.open{left:0}
+  .sidebar-overlay.open{display:block}
+  .mobile-toggle{display:flex;align-items:center;justify-content:center}
+  .content{padding:16px}
+  .cards-grid{grid-template-columns:1fr}
+  .hero{min-height:260px;padding:40px 16px 30px}
+  .card-visit{opacity:1;transform:none}
+}
+@media(max-width:480px){
+  .hero-stats{gap:16px}
+  .hero-stat .num{font-size:1.5rem}
+}
+
+/* Animations */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.animate-in{animation:fadeUp .5s ease-out forwards}
+
+/* NSFW Warning Overlay */
+.nsfw-warning{
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(10,10,15,.98);backdrop-filter:blur(20px);
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .5s;
+}
+.nsfw-warning.hidden{opacity:0;pointer-events:none}
+.nsfw-box{
+  text-align:center;max-width:420px;padding:40px;
+  background:var(--card);border:1px solid rgba(168,85,247,.3);
+  border-radius:var(--radius);
+}
+.nsfw-box h2{font-size:2rem;margin-bottom:12px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nsfw-box p{color:var(--text2);margin-bottom:24px;font-size:.95rem}
+.nsfw-btn{
+  padding:14px 40px;border:none;border-radius:30px;
+  background:var(--grad);color:#fff;font-size:1.05rem;font-weight:600;
+  cursor:pointer;transition:var(--transition);
+}
+.nsfw-btn:hover{box-shadow:var(--glow);transform:scale(1.05)}
+.nsfw-exit{
+  display:block;margin-top:16px;color:var(--text3);font-size:.85rem;
+  cursor:pointer;transition:color .3s;
+}
+.nsfw-exit:hover{color:var(--text)}
+</style>
+</head>
+<body>
+
+<!-- NSFW Warning -->
+<div class="nsfw-warning" id="nsfwWarning">
+  <div class="nsfw-box">
+    <h2>🔞 年龄验证</h2>
+    <p>本站包含成人内容，仅供18岁以上成年人浏览。<br>进入即表示您已年满18周岁。</p>
+    <button class="nsfw-btn" onclick="enterSite()">我已年满18岁，进入</button>
+    <span class="nsfw-exit" onclick="window.location='https://www.google.com'">离开</span>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <h1 class="hero-title">🔞 全网成人站点导航</h1>
+  <p class="hero-sub">精选全球优质成人站点 · 一站直达 · 持续更新</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num" id="totalSites">0</div><div class="label">收录站点</div></div>
+    <div class="hero-stat"><div class="num" id="totalCats">0</div><div class="label">精选分类</div></div>
+    <div class="hero-stat"><div class="num">24h</div><div class="label">持续更新</div></div>
+  </div>
+</section>
+
+<!-- Search -->
+<div class="search-wrap">
+  <div class="search-inner">
+    <span class="search-icon">🔍</span>
+    <input type="text" class="search-input" id="searchInput" placeholder="搜索站点名称、分类或标签...">
+  </div>
+</div>
+
+<!-- Main Layout -->
+<div class="main-layout">
+  <!-- Sidebar -->
+  <nav class="sidebar" id="sidebar"></nav>
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+  <!-- Content -->
+  <main class="content" id="content"></main>
+</div>
+
+<!-- Mobile Toggle -->
+<button class="mobile-toggle" id="mobileToggle" onclick="toggleSidebar()">☰</button>
+
+<!-- Back to Top -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0})">↑ 回到顶部</button>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>⚠️ 本页面仅供成年人浏览 · 请遵守当地法律法规 · 所有链接指向第三方站点</p>
+  <p style="margin-top:8px">© 2025 成人导航 · 精选 <span id="footSites">0</span> 个站点 · <span id="footCats">0</span> 个分类</p>
+</footer>
+
+<script>
+// ============ DATA ============
+const CATEGORIES = [
+  {
+    group: "🆓 免费站点",
+    cats: [
+      {
+        id:"free-video", emoji:"🎬", name:"免费视频站",
+        sites:[
+          {name:"Pornhub",url:"https://www.pornhub.com",rating:5,desc:"全球最大成人视频平台，内容海量更新快",tags:["免费","热门"]},
+          {name:"XVIDEOS",url:"https://www.xvideos.com",rating:5,desc:"全球流量第一的免费成人视频站",tags:["免费","热门"]},
+          {name:"xHamster",url:"https://xhamster.com",rating:4,desc:"老牌综合成人社区，用户原创内容丰富",tags:["免费"]},
+          {name:"XNXX",url:"https://www.xnxx.com",rating:4,desc:"极简界面大流量视频站，分类齐全",tags:["免费"]},
+          {name:"YouPorn",url:"https://www.youporn.com",rating:4,desc:"Pornhub旗下高质量视频站",tags:["免费"]},
+          {name:"RedTube",url:"https://www.redtube.com",rating:4,desc:"经典管站之一，高清视频丰富",tags:["免费"]},
+          {name:"SpankBang",url:"https://spankbang.com",rating:4,desc:"高质量全长视频免费观看",tags:["免费","热门"]},
+          {name:"Tube8",url:"https://www.tube8.com",rating:3,desc:"老牌管站，Pornhub家族成员",tags:["免费"]},
+          {name:"PornOne",url:"https://pornone.com",rating:4,desc:"前VPORN改名，4K高清视频资源",tags:["免费"]},
+          {name:"EPorner",url:"https://www.eporner.com",rating:4,desc:"支持4K和VR的免费高清视频站",tags:["免费","VR"]},
+        ]
+      },
+      {
+        id:"asian", emoji:"🌸", name:"亚洲/日本",
+        sites:[
+          {name:"JavHD",url:"https://www.javhd.com",rating:4,desc:"高清日本AV付费流媒体平台",tags:["付费","中文"]},
+          {name:"JavMost",url:"https://javmost.cx",rating:4,desc:"免费日本AV聚合站，更新快资源多",tags:["免费","中文"]},
+          {name:"Missav",url:"https://missav.com",rating:5,desc:"最受欢迎的免费日本AV在线播放站",tags:["免费","中文","热门"]},
+          {name:"Jable",url:"https://jable.tv",rating:5,desc:"台湾热门JAV站，中文界面体验极佳",tags:["免费","中文","热门"]},
+          {name:"THISAV",url:"https://thisav.com",rating:3,desc:"亚洲成人视频免费分享平台",tags:["免费","中文"]},
+          {name:"Tokyo-Hot",url:"https://www.tokyo-hot.com",rating:4,desc:"日本知名无码制作商官网",tags:["付费"]},
+          {name:"Caribbean",url:"https://www.caribbeancom.com",rating:4,desc:"顶级日本无码成人视频站",tags:["付费"]},
+          {name:"Heyzo",url:"https://www.heyzo.com",rating:4,desc:"高画质日本无码视频平台",tags:["付费"]},
+          {name:"Supjav",url:"https://supjav.com",rating:4,desc:"全类型JAV聚合免费观看",tags:["免费","中文"]},
+          {name:"Avgle",url:"https://avgle.com",rating:3,desc:"知名亚洲成人视频免费站",tags:["免费","中文"]},
+        ]
+      },
+      {
+        id:"tiktok", emoji:"📱", name:"TikTok风短视频",
+        sites:[
+          {name:"FYPTT",url:"https://fyptt.to",rating:4,desc:"TikTok风格成人短视频刷不停",tags:["免费","热门"]},
+          {name:"ThotsBay",url:"https://thotsbay.com",rating:3,desc:"网红泄露内容聚合平台",tags:["免费"]},
+          {name:"Scrolller",url:"https://scrolller.com",rating:4,desc:"Reddit NSFW内容无限瀑布流浏览",tags:["免费"]},
+          {name:"FikFap",url:"https://fikfap.com",rating:4,desc:"成人版TikTok，无限滑动浏览",tags:["免费","热门"]},
+          {name:"PornTok",url:"https://porntok.org",rating:3,desc:"短视频形式的成人内容合集",tags:["免费"]},
+          {name:"SwiperToo",url:"https://swipertoo.com",rating:3,desc:"类TikTok成人短视频平台",tags:["免费"]},
+        ]
+      },
+      {
+        id:"pics", emoji:"📸", name:"图片站",
+        sites:[
+          {name:"Scrolller",url:"https://scrolller.com",rating:4,desc:"Reddit图片瀑布流，超多NSFW板块",tags:["免费"]},
+          {name:"PicHunter",url:"https://www.pichunter.com",rating:3,desc:"海量成人图片分类浏览",tags:["免费"]},
+          {name:"BabesMachine",url:"https://www.babesmachine.com",rating:3,desc:"美女图片自动播放站",tags:["免费"]},
+          {name:"ImageFap",url:"https://www.imagefap.com",rating:4,desc:"用户上传成人图片社区，分类极细",tags:["免费"]},
+          {name:"Sex.com",url:"https://www.sex.com",rating:4,desc:"成人图片Pinterest，可收藏分享",tags:["免费"]},
+          {name:"Pmatehunter",url:"https://www.pmatehunter.com",rating:3,desc:"Playmate高清图片收藏站",tags:["免费"]},
+        ]
+      },
+      {
+        id:"softcore", emoji:"🌹", name:"软色情/写真",
+        sites:[
+          {name:"MetArt",url:"https://www.metart.com",rating:5,desc:"顶级人体艺术摄影，画质业界天花板",tags:["付费","热门"]},
+          {name:"Playboy",url:"https://www.playboy.com",rating:4,desc:"传奇品牌Playboy数字化内容平台",tags:["付费"]},
+          {name:"SuicideGirls",url:"https://www.suicidegirls.com",rating:4,desc:"另类朋克风格美女写真社区",tags:["付费"]},
+          {name:"FTV Girls",url:"https://www.ftvgirls.com",rating:4,desc:"首次出镜系列，清新自然风格",tags:["付费"]},
+          {name:"Hegre",url:"https://www.hegre.com",rating:5,desc:"Petter Hegre大师级人体摄影",tags:["付费"]},
+          {name:"Zishy",url:"https://www.zishy.com",rating:4,desc:"邻家女孩风格写真，自然不做作",tags:["付费"]},
+        ]
+      },
+      {
+        id:"search", emoji:"🔎", name:"色情搜索引擎",
+        sites:[
+          {name:"Rexxx",url:"https://rexxx.com",rating:4,desc:"成人专用搜索引擎，聚合多站结果",tags:["免费"]},
+          {name:"NudeVista",url:"https://www.nudevista.com",rating:4,desc:"强大的成人视频搜索引擎",tags:["免费"]},
+          {name:"PornMD",url:"https://www.pornmd.com",rating:3,desc:"Pornhub旗下成人搜索引擎",tags:["免费"]},
+          {name:"FreeOnes",url:"https://www.freeones.com",rating:4,desc:"女优百科+搜索引擎，信息最全",tags:["免费","热门"]},
+          {name:"TubeSafari",url:"https://www.tubesafari.com",rating:3,desc:"跨站搜索成人视频内容",tags:["免费"]},
+        ]
+      },
+    ]
+  },
+  {
+    group: "💎 付费精品",
+    cats: [
+      {
+        id:"premium", emoji:"👑", name:"付费精品站",
+        sites:[
+          {name:"Brazzers",url:"https://www.brazzers.com",rating:5,desc:"全球最知名的付费成人品牌，制作精良",tags:["付费","热门"]},
+          {name:"Reality Kings",url:"https://www.realitykings.com",rating:5,desc:"真实场景系列，业界标杆级制作",tags:["付费","热门"]},
+          {name:"Naughty America",url:"https://www.naughtyamerica.com",rating:4,desc:"经典美国成人品牌，VR内容领先",tags:["付费","VR"]},
+          {name:"Digital Playground",url:"https://www.digitalplayground.com",rating:4,desc:"电影级成人大片制作商",tags:["付费"]},
+          {name:"BangBros",url:"https://bangbros.com",rating:4,desc:"知名成人品牌，系列IP众多",tags:["付费"]},
+          {name:"Mofos",url:"https://www.mofos.com",rating:4,desc:"年轻素人风格付费视频站",tags:["付费"]},
+          {name:"Vixen",url:"https://www.vixen.com",rating:5,desc:"极致唯美高端成人影片，画质顶级",tags:["付费","热门"]},
+          {name:"Tushy",url:"https://www.tushy.com",rating:5,desc:"Vixen旗下，后庭主题唯美系列",tags:["付费"]},
+          {name:"Blacked",url:"https://www.blacked.com",rating:5,desc:"Vixen旗下，跨种族主题唯美制作",tags:["付费"]},
+          {name:"Evil Angel",url:"https://www.evilangel.com",rating:4,desc:"传奇成人厂牌，内容大胆前卫",tags:["付费"]},
+        ]
+      },
+      {
+        id:"amateur", emoji:"🤳", name:"素人/自拍",
+        sites:[
+          {name:"OnlyFans",url:"https://onlyfans.com",rating:5,desc:"全球最大创作者订阅平台，直连博主",tags:["付费","热门"]},
+          {name:"Fansly",url:"https://fansly.com",rating:4,desc:"OnlyFans替代平台，功能更灵活",tags:["付费"]},
+          {name:"ManyVids",url:"https://www.manyvids.com",rating:4,desc:"独立创作者视频销售平台",tags:["付费"]},
+          {name:"Chaturbate录像",url:"https://chaturbate.com",rating:4,desc:"直播平台录像回放，素人内容丰富",tags:["免费"]},
+          {name:"Pornhub素人",url:"https://www.pornhub.com/categories/amateur",rating:4,desc:"Pornhub素人专区，真实用户上传",tags:["免费"]},
+          {name:"XConfessions",url:"https://xconfessions.com",rating:4,desc:"Erika Lust出品，女性视角高质量成人电影",tags:["付费"]},
+        ]
+      },
+    ]
+  },
+  {
+    group: "🔴 直播互动",
+    cats: [
+      {
+        id:"cam", emoji:"📹", name:"直播Cam站",
+        sites:[
+          {name:"Chaturbate",url:"https://chaturbate.com",rating:5,desc:"全球最大免费成人直播平台",tags:["免费","热门","直播"]},
+          {name:"StripChat",url:"https://stripchat.com",rating:5,desc:"支持VR观看的大型直播平台",tags:["免费","VR","直播"]},
+          {name:"LiveJasmin",url:"https://www.livejasmin.com",rating:4,desc:"高端优质主播直播平台",tags:["付费","直播"]},
+          {name:"BongaCams",url:"https://bongacams.com",rating:4,desc:"欧洲热门成人直播站",tags:["免费","直播"]},
+          {name:"CamSoda",url:"https://www.camsoda.com",rating:4,desc:"创新功能多的直播平台",tags:["免费","直播"]},
+          {name:"MyFreeCams",url:"https://www.myfreecams.com",rating:4,desc:"经典老牌免费直播平台",tags:["免费","直播"]},
+          {name:"Flirt4Free",url:"https://www.flirt4free.com",rating:4,desc:"高端付费直播，主播质量高",tags:["付费","直播"]},
+          {name:"Cam4",url:"https://www.cam4.com",rating:3,desc:"国际化成人直播社区",tags:["免费","直播"]},
+        ]
+      },
+      {
+        id:"voyeur", emoji:"👀", name:"偷拍/监控",
+        sites:[
+          {name:"RealLifeCam",url:"https://reallifecam.com",rating:4,desc:"24/7真实公寓生活监控直播",tags:["付费","直播"]},
+          {name:"VoyeurHouse",url:"https://voyeur-house.tv",rating:4,desc:"多房间真实生活窥视直播",tags:["付费","直播"]},
+          {name:"Camarads",url:"https://www.camarads.com",rating:3,desc:"真实情侣生活直播平台",tags:["付费","直播"]},
+          {name:"VoyeurWeb",url:"https://www.voyeurweb.com",rating:3,desc:"用户投稿偷拍/裸露图片社区",tags:["免费"]},
+          {name:"VHTV",url:"https://vhtv.me",rating:3,desc:"真实生活监控直播聚合站",tags:["付费","直播"]},
+        ]
+      },
+      {
+        id:"chat", emoji:"💬", name:"性聊天",
+        sites:[
+          {name:"DirtyRoulette",url:"https://www.dirtyroulette.com",rating:3,desc:"成人随机视频聊天轮盘",tags:["免费","直播"]},
+          {name:"ChatRandom",url:"https://www.chatrandom.com",rating:3,desc:"随机配对视频聊天平台",tags:["免费"]},
+          {name:"Flingster",url:"https://flingster.com",rating:3,desc:"匿名成人视频聊天，支持滤镜",tags:["免费"]},
+          {name:"ChatSpin",url:"https://chatspin.com",rating:3,desc:"随机视频聊天，支持性别筛选",tags:["免费"]},
+          {name:"Shagle",url:"https://shagle.com",rating:3,desc:"全球随机视频聊天平台",tags:["免费"]},
+        ]
+      },
+    ]
+  },
+  {
+    group: "✨ 特色内容",
+    cats: [
+      {
+        id:"vr", emoji:"🥽", name:"VR成人",
+        sites:[
+          {name:"SexLikeReal",url:"https://www.sexlikereal.com",rating:5,desc:"最大VR成人平台，内容超丰富",tags:["付费","VR","热门"]},
+          {name:"VRBangers",url:"https://vrbangers.com",rating:4,desc:"高质量8K VR成人视频",tags:["付费","VR"]},
+          {name:"NaughtyAmericaVR",url:"https://www.naughtyamericavr.com",rating:4,desc:"NA出品VR系列，知名演员参演",tags:["付费","VR"]},
+          {name:"WankzVR",url:"https://www.wankzvr.com",rating:4,desc:"沉浸感极强的VR体验",tags:["付费","VR"]},
+          {name:"BaDoinkVR",url:"https://badoinkvr.com",rating:4,desc:"获奖VR成人工作室",tags:["付费","VR"]},
+          {name:"VRPorn",url:"https://vrporn.com",rating:4,desc:"VR成人内容聚合与评测站",tags:["免费","VR"]},
+        ]
+      },
+      {
+        id:"ai-porn", emoji:"🤖", name:"AI色情",
+        sites:[
+          {name:"Pornpen",url:"https://pornpen.ai",rating:4,desc:"AI生成成人图片，自定义程度高",tags:["免费","AI"]},
+          {name:"SoulGen",url:"https://www.soulgen.net",rating:4,desc:"AI生成真实/动漫风美女图片",tags:["付费","AI"]},
+          {name:"Undress.app",url:"https://undress.app",rating:3,desc:"AI脱衣工具（争议性产品）",tags:["付费","AI"]},
+          {name:"PornJourney",url:"https://pornjourney.com",rating:4,desc:"AI成人图像生成器，风格多样",tags:["付费","AI"]},
+          {name:"Seduced.ai",url:"https://seduced.ai",rating:4,desc:"AI成人内容生成平台",tags:["付费","AI"]},
+          {name:"Promptchan",url:"https://promptchan.ai",rating:4,desc:"免费AI成人图片生成器",tags:["免费","AI","热门"]},
+          {name:"Candy.ai",url:"https://candy.ai",rating:3,desc:"AI虚拟女友聊天与图片生成",tags:["付费","AI"]},
+        ]
+      },
+      {
+        id:"anime", emoji:"🎌", name:"动漫/漫画",
+        sites:[
+          {name:"Hanime",url:"https://hanime.tv",rating:5,desc:"最佳H动画在线观看平台",tags:["免费","热门"]},
+          {name:"nhentai",url:"https://nhentai.net",rating:5,desc:"最大英文H漫画/同人志平台",tags:["免费","热门"]},
+          {name:"Hentai Haven",url:"https://hentaihaven.xxx",rating:4,desc:"经典H动画站，分类详细",tags:["免费"]},
+          {name:"E-Hentai",url:"https://e-hentai.org",rating:4,desc:"老牌H漫画资源库，藏量惊人",tags:["免费"]},
+          {name:"Hitomi",url:"https://hitomi.la",rating:4,desc:"多语言H漫画阅读器，界面优秀",tags:["免费","中文"]},
+          {name:"Wnacg",url:"https://www.wnacg.com",rating:4,desc:"中文同人志/H漫画站",tags:["免费","中文"]},
+          {name:"18comic",url:"https://18comic.vip",rating:4,desc:"禁漫天堂，中文H漫画最全站",tags:["免费","中文","热门"]},
+        ]
+      },
+      {
+        id:"games", emoji:"🎮", name:"成人游戏",
+        sites:[
+          {name:"Nutaku",url:"https://www.nutaku.net",rating:4,desc:"最大成人游戏平台，网页+手机端",tags:["免费","热门"]},
+          {name:"F95zone",url:"https://f95zone.to",rating:5,desc:"最大成人游戏论坛社区，资源极多",tags:["免费","热门"]},
+          {name:"Lewdzone",url:"https://www.lewdzone.com",rating:3,desc:"成人游戏下载与评测站",tags:["免费"]},
+          {name:"DLsite",url:"https://www.dlsite.com",rating:4,desc:"日本同人游戏/音声作品贩售平台",tags:["付费","中文"]},
+          {name:"Itch.io NSFW",url:"https://itch.io/games/nsfw",rating:3,desc:"独立开发者成人游戏集合",tags:["免费"]},
+          {name:"Erogames",url:"https://www.erogames.com",rating:3,desc:"免费在线网页成人游戏",tags:["免费"]},
+        ]
+      },
+      {
+        id:"gay", emoji:"🏳️‍🌈", name:"同性(Gay)",
+        sites:[
+          {name:"GayMaleTube",url:"https://www.gaymaletube.com",rating:4,desc:"大型免费Gay视频聚合站",tags:["免费"]},
+          {name:"Men.com",url:"https://www.men.com",rating:5,desc:"顶级Gay成人制作品牌",tags:["付费","热门"]},
+          {name:"Helix Studios",url:"https://www.helixstudios.net",rating:4,desc:"高质量年轻Gay视频制作",tags:["付费"]},
+          {name:"Sean Cody",url:"https://www.seancody.com",rating:4,desc:"知名素人Gay视频品牌",tags:["付费"]},
+          {name:"BelAmi",url:"https://www.belamionline.com",rating:4,desc:"欧洲顶级Gay制作公司",tags:["付费"]},
+          {name:"GayTorrent",url:"https://www.gaytor.rent",rating:3,desc:"Gay成人内容种子站",tags:["免费"]},
+        ]
+      },
+      {
+        id:"trans", emoji:"🏳️‍⚧️", name:"变性(Trans)",
+        sites:[
+          {name:"Grooby",url:"https://www.grooby.com",rating:4,desc:"最大跨性别成人内容网络",tags:["付费"]},
+          {name:"TransAngels",url:"https://www.transangels.com",rating:4,desc:"高质量跨性别视频制作",tags:["付费"]},
+          {name:"ShemaleZ",url:"https://shemalez.com",rating:3,desc:"免费跨性别视频聚合站",tags:["免费"]},
+          {name:"TSPlayground",url:"https://tsplayground.com",rating:3,desc:"Evil Angel旗下跨性别系列",tags:["付费"]},
+          {name:"FuqT",url:"https://www.fuqt.com",rating:3,desc:"免费跨性别视频搜索引擎",tags:["免费"]},
+        ]
+      },
+      {
+        id:"fetish", emoji:"⛓️", name:"恋物/特殊",
+        sites:[
+          {name:"Kink.com",url:"https://www.kink.com",rating:5,desc:"全球最知名BDSM/恋物癖制作品牌",tags:["付费","热门"]},
+          {name:"BoundGangBangs",url:"https://www.kink.com/channel/boundgangbangs",rating:4,desc:"Kink旗下束缚系列",tags:["付费"]},
+          {name:"FetLife",url:"https://fetlife.com",rating:4,desc:"全球最大恋物癖社交社区",tags:["免费"]},
+          {name:"Clips4Sale",url:"https://www.clips4sale.com",rating:4,desc:"恋物癖短片交易市场，品类极全",tags:["付费"]},
+          {name:"iWantClips",url:"https://iwantclips.com",rating:3,desc:"恋物癖视频与定制服务平台",tags:["付费"]},
+          {name:"BDSMTest",url:"https://bdsmtest.org",rating:3,desc:"BDSM倾向测试与科普网站",tags:["免费"]},
+        ]
+      },
+    ]
+  },
+  {
+    group: "🛠️ 工具社区",
+    cats: [
+      {
+        id:"forum", emoji:"💭", name:"论坛社区",
+        sites:[
+          {name:"Reddit NSFW",url:"https://www.reddit.com/r/nsfw",rating:5,desc:"Reddit海量NSFW子版块，内容无限",tags:["免费","热门"]},
+          {name:"PlanetSuzy",url:"https://planetsuzy.org",rating:3,desc:"老牌成人论坛，资源分享活跃",tags:["免费"]},
+          {name:"FreeOnes Forum",url:"https://freeones.com/forum",rating:3,desc:"女优讨论与资源分享论坛",tags:["免费"]},
+          {name:"AdultDVDTalk",url:"https://www.adultdvdtalk.com",rating:3,desc:"成人影片评论与讨论社区",tags:["免费"]},
+          {name:"GFY",url:"https://gfy.com",rating:3,desc:"成人站长行业讨论论坛",tags:["免费"]},
+          {name:"草榴社区",url:"https://t66y.com",rating:4,desc:"华人最知名成人社区论坛",tags:["免费","中文","热门"]},
+        ]
+      },
+      {
+        id:"shop", emoji:"🛒", name:"情趣商城",
+        sites:[
+          {name:"Adam & Eve",url:"https://www.adameve.com",rating:4,desc:"美国最大情趣用品零售商",tags:["付费"]},
+          {name:"Lovense",url:"https://www.lovense.com",rating:5,desc:"高科技远程控制情趣玩具品牌",tags:["付费","热门"]},
+          {name:"LELO",url:"https://www.lelo.com",rating:5,desc:"瑞典高端奢华情趣品牌",tags:["付费"]},
+          {name:"Fleshlight",url:"https://www.fleshlight.com",rating:4,desc:"全球最知名男用飞机杯品牌",tags:["付费"]},
+          {name:"SheVibe",url:"https://shevibe.com",rating:4,desc:"独立情趣用品商店，设计独特",tags:["付费"]},
+          {name:"Satisfyer",url:"https://www.satisfyer.com",rating:4,desc:"性价比极高的德国情趣品牌",tags:["付费"]},
+        ]
+      },
+      {
+        id:"dating", emoji:"💘", name:"约会交友",
+        sites:[
+          {name:"Ashley Madison",url:"https://www.ashleymadison.com",rating:4,desc:"全球最大已婚人士约会平台",tags:["付费","热门"]},
+          {name:"AdultFriendFinder",url:"https://adultfriendfinder.com",rating:4,desc:"成人交友约会社区，用户庞大",tags:["付费"]},
+          {name:"Feeld",url:"https://feeld.co",rating:4,desc:"开放关系/多元交友App",tags:["免费"]},
+          {name:"3Fun",url:"https://www.3fun.co",rating:3,desc:"三人行/多伴侣交友平台",tags:["免费"]},
+          {name:"Pure",url:"https://pure.app",rating:3,desc:"匿名即时约会App",tags:["免费"]},
+          {name:"FetLife",url:"https://fetlife.com",rating:4,desc:"BDSM/恋物癖交友社区",tags:["免费"]},
+        ]
+      },
+      {
+        id:"erotica", emoji:"📖", name:"色情文学",
+        sites:[
+          {name:"Literotica",url:"https://www.literotica.com",rating:5,desc:"全球最大成人小说社区，品类齐全",tags:["免费","热门"]},
+          {name:"Sexstories",url:"https://sexstories.com",rating:4,desc:"成人故事投稿阅读平台",tags:["免费"]},
+          {name:"Chyoa",url:"https://chyoa.com",rating:4,desc:"互动式成人冒险故事平台",tags:["免费"]},
+          {name:"Lushstories",url:"https://www.lushstories.com",rating:4,desc:"高质量成人短篇小说社区",tags:["免费"]},
+          {name:"ASSTR",url:"https://www.asstr.org",rating:3,desc:"老牌成人故事免费仓库",tags:["免费"]},
+        ]
+      },
+      {
+        id:"wiki", emoji:"📚", name:"明星百科",
+        sites:[
+          {name:"FreeOnes",url:"https://www.freeones.com",rating:5,desc:"最全成人女优百科数据库",tags:["免费","热门"]},
+          {name:"Babepedia",url:"https://www.babepedia.com",rating:4,desc:"成人明星传记与图片百科",tags:["免费"]},
+          {name:"IAFD",url:"https://www.iafd.com",rating:4,desc:"互联网成人电影数据库(IMDb级别)",tags:["免费"]},
+          {name:"Boobpedia",url:"https://www.boobpedia.com",rating:3,desc:"成人明星Wiki百科全书",tags:["免费"]},
+          {name:"Indexxx",url:"https://www.indexxx.com",rating:4,desc:"成人模特索引与链接数据库",tags:["免费"]},
+        ]
+      },
+    ]
+  }
+];
+
+// ============ RENDER ============
+function getTagClass(tag){
+  const map = {'免费':'tag-free','付费':'tag-paid','中文':'tag-cn','热门':'tag-hot','VR':'tag-vr','AI':'tag-ai','直播':'tag-live'};
+  return map[tag] || 'tag-free';
+}
+
+function renderStars(n){
+  let s = '';
+  for(let i=1;i<=5;i++) s += `<span class="star${i>n?' empty':''}">${i<=n?'★':'☆'}</span>`;
+  return s;
+}
+
+function getInitial(name){
+  return name.replace(/^(the|www\.)/i,'').charAt(0).toUpperCase();
+}
+
+let totalSites = 0;
+let totalCats = 0;
+
+// Sidebar
+function renderSidebar(){
+  const sb = document.getElementById('sidebar');
+  let html = '';
+  CATEGORIES.forEach(g => {
+    html += `<div class="sidebar-group"><div class="sidebar-group-title">${g.group}</div>`;
+    g.cats.forEach(c => {
+      totalCats++;
+      const count = c.sites.length;
+      totalSites += count;
+      html += `<a class="sidebar-link" href="#${c.id}" onclick="closeSidebar()">
+        <span class="emoji">${c.emoji}</span><span>${c.name}</span>
+        <span class="count">${count}</span></a>`;
+    });
+    html += `</div>`;
+  });
+  sb.innerHTML = html;
+}
+
+// Content
+function renderContent(filter=''){
+  const main = document.getElementById('content');
+  let html = '';
+  const q = filter.toLowerCase();
+  CATEGORIES.forEach(g => {
+    g.cats.forEach(c => {
+      const filtered = c.sites.filter(s => {
+        if(!q) return true;
+        return s.name.toLowerCase().includes(q) || s.desc.includes(q) || c.name.includes(q) || s.tags.some(t=>t.includes(q));
+      });
+      if(filtered.length === 0) return;
+      html += `<section class="category-section" id="${c.id}">
+        <div class="category-header">
+          <span class="category-emoji">${c.emoji}</span>
+          <h2 class="category-title">${c.name}</h2>
+          <span class="category-count">${filtered.length} 个站点</span>
+        </div>
+        <div class="cards-grid">`;
+      filtered.forEach(s => {
+        html += `<a href="${s.url}" target="_blank" rel="noopener noreferrer" class="site-card">
+          <div class="card-top">
+            <div class="card-icon">${getInitial(s.name)}</div>
+            <div class="card-info">
+              <div class="card-name">${s.name}</div>
+              <div class="card-rating">${renderStars(s.rating)}</div>
+            </div>
+          </div>
+          <div class="card-desc">${s.desc}</div>
+          <div class="card-footer">
+            ${s.tags.map(t=>`<span class="tag ${getTagClass(t)}">${t}</span>`).join('')}
+            <span class="card-visit">访问 →</span>
+          </div>
+        </a>`;
+      });
+      html += `</div></section>`;
+    });
+  });
+  if(!html) html = `<div style="text-align:center;padding:80px 20px;color:var(--text3)"><p style="font-size:2rem;margin-bottom:12px">😔</p><p>没有找到匹配的站点</p></div>`;
+  main.innerHTML = html;
+  observeSections();
+}
+
+// ============ INTERACTIONS ============
+function enterSite(){
+  document.getElementById('nsfwWarning').classList.add('hidden');
+  sessionStorage.setItem('nsfw-ok','1');
+}
+if(sessionStorage.getItem('nsfw-ok')) document.getElementById('nsfwWarning').classList.add('hidden');
+
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sidebarOverlay').classList.toggle('open');
+}
+function closeSidebar(){
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebarOverlay').classList.remove('open');
+}
+
+// Search
+let searchTimer;
+document.getElementById('searchInput').addEventListener('input', function(){
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(()=>renderContent(this.value.trim()),200);
+});
+
+// Scroll animations
+function observeSections(){
+  const sections = document.querySelectorAll('.category-section');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+  },{threshold:0.05,rootMargin:'0px 0px -40px 0px'});
+  sections.forEach(s=>obs.observe(s));
+}
+
+// Active sidebar link
+function updateActiveSidebar(){
+  const sections = document.querySelectorAll('.category-section');
+  const links = document.querySelectorAll('.sidebar-link');
+  let currentId = '';
+  sections.forEach(s=>{
+    const rect = s.getBoundingClientRect();
+    if(rect.top <= 150) currentId = s.id;
+  });
+  links.forEach(l=>{
+    l.classList.toggle('active', l.getAttribute('href') === '#'+currentId);
+  });
+}
+
+// Back to top
+window.addEventListener('scroll',()=>{
+  document.getElementById('backTop').classList.toggle('show',window.scrollY > 600);
+  updateActiveSidebar();
+});
+
+// Init
+renderSidebar();
+renderContent();
+document.getElementById('totalSites').textContent = totalSites;
+document.getElementById('totalCats').textContent = totalCats;
+document.getElementById('footSites').textContent = totalSites;
+document.getElementById('footCats').textContent = totalCats;
+</script>
+</body>
+</html>
